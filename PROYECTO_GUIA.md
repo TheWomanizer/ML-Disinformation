@@ -1,6 +1,6 @@
 # Guía Maestra del Proyecto: Sistema Integral Multi-Capa para la Detección de Desinformación
 
-*Versión 2.0 - Edición Detallada*
+*Versión 2.0*
 
 ## 1. Filosofía y Objetivos del Proyecto
 
@@ -14,19 +14,15 @@ El objetivo final es desarrollar un prototipo de sistema robusto, interpretable 
 
 ## 2. Configuración del Entorno de Desarrollo
 
-(Sin cambios, la sección anterior era correcta)
-
 ## 3. Fases de Ejecución: Guía Paso a Paso
-
----
 
 ### **Fase 0: El Fundamento - Limpieza y Preparación de Datos**
 
-*   **🎯 Objetivo:** Transformar los datos crudos en conjuntos de datos limpios, validados y listos para el modelado. El 90% del éxito de un proyecto de ML reside en esta fase.
+*   **Objetivo:** Transformar los datos crudos en conjuntos de datos limpios, validados y listos para el modelado. El 90% del éxito de un proyecto de ML reside en esta fase.
 
 #### **Actividad 0.1: Preparación de `dataset1`**
 
-*   **📝 Plan de Acción Detallado:**
+*   **Plan de Acción Detallado:**
 
     1.  **Análisis de Nulos y Ceros (Validación Semántica):**
         *   **Justificación:** No podemos confiar ciegamente en los datos. Un valor de 0 o `NaN` puede significar cosas distintas. Debemos entenderlo antes de actuar.
@@ -70,17 +66,17 @@ El objetivo final es desarrollar un prototipo de sistema robusto, interpretable 
             df1[numeric_cols] = scaler.fit_transform(df1[numeric_cols])
             ```
 
-*   **✅ Entregable:** Un DataFrame `df1_processed` listo para el modelado.
+*   **Entregable:** Un DataFrame `df1_processed` listo para el modelado.
 
 ---
 
 ### **Fase 1: El Motor de Clasificación de Contenido**
 
-*   **🎯 Objetivo:** Construir y evaluar nuestros dos modelos predictivos principales.
+*   **Objetivo:** Construir y evaluar nuestros dos modelos predictivos principales.
 
 #### **Actividad 1.1: Modelo con Features Tradicionales (XGBoost)**
 
-*   **📝 Pasos:**
+*   **Pasos:**
     1.  **División Estratificada:** Dividir `df1_processed` en entrenamiento y prueba. Usar `stratify=y` es crucial si hay desbalance de clases para mantener la misma proporción en ambos conjuntos.
         ```python
         from sklearn.model_selection import train_test_split
@@ -93,7 +89,7 @@ El objetivo final es desarrollar un prototipo de sistema robusto, interpretable 
 
 *   **Justificación:** Mientras que XGBoost ve los datos como una bolsa de números, BERT lee y entiende el texto, capturando sarcasmo, contexto y relaciones semánticas. Es un enfoque mucho más profundo.
 *   **Consejo Profesional:** Fine-tuning de BERT es computacionalmente intensivo. Es recomendable empezar con una muestra pequeña del dataset (ej. 1000 filas) para asegurar que todo el pipeline funciona, antes de lanzarlo sobre el conjunto de datos completo, preferiblemente en un entorno con GPU (como Google Colab).
-*   **📝 Pasos:**
+*   **Pasos:**
     1.  **Carga y Preparación:** Usar la librería `datasets` de Hugging Face. Cargar un modelo pre-entrenado **en español** es clave (`dccuchile/bert-base-spanish-wwm-uncased` es una excelente opción).
     2.  **Fine-tuning:** Seguir el proceso de tokenización y entrenamiento. La librería `Trainer` de Hugging Face simplifica mucho este proceso y maneja la optimización por nosotros.
 
@@ -101,9 +97,9 @@ El objetivo final es desarrollar un prototipo de sistema robusto, interpretable 
 
 ### **Fase 2: El Módulo de Análisis de la Fuente**
 
-*   **🎯 Objetivo:** Ir más allá del contenido y evaluar al mensajero.
+*   **Objetivo:** Ir más allá del contenido y evaluar al mensajero.
 
-*   **📝 Pasos:**
+*   **Pasos:**
     1.  **Puntuación de Credibilidad (Target Encoding con Precaución):**
         *   **Justificación:** La idea de reemplazar a un autor por su ratio histórico de veracidad es potente. Esto se llama *Target Encoding*.
         *   **Advertencia:** Hacer esto ingenuamente puede causar *overfitting*. Un método más seguro es calcular estos scores usando solo el conjunto de entrenamiento y luego aplicarlos al de prueba, o usar una estrategia de validación cruzada.
