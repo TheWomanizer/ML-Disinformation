@@ -1,0 +1,284 @@
+# Sistema Integral Multi-Capa para la Detección de Desinformación
+# Configuración Principal - Arquitectura Profesional
+# Versión: 3.0 - Senior Level Implementation
+
+# =============================================================================
+# CONFIGURACIÓN GENERAL DEL PROYECTO
+# =============================================================================
+project:
+  name: "misinformation_detection_system"
+  version: "3.0.0"
+  description: "Sistema Integral Multi-Capa para Detección de Desinformación"
+  author: "Jose Alejandro Jiménez Vásquez"
+  created: "2025-08-15"
+  environment: "development"
+
+# =============================================================================
+# CONFIGURACIÓN DE DATOS
+# =============================================================================
+data:
+  # Directorios
+  raw_data_dir: "./dataset1"
+  raw_data_dir_2: "./dataset2"
+  processed_data_dir: "./processed_data"
+  cache_dir: "./cache"
+  logs_dir: "./logs"
+  models_dir: "./models"
+  results_dir: "./results"
+
+  # Archivos principales
+  main_features_file: "Features_For_Traditional_ML_Techniques.csv"
+  truth_seeker_file: "Truth_Seeker_Model_Dataset.csv"
+  social_media_file: "social media usage dataset.csv"
+
+  # Configuración de procesamiento
+  target_column: "BinaryNumTarget"
+  test_size: 0.2
+  random_state: 42
+  use_stratify: true
+
+  # Configuración de outliers (CRÍTICO)
+  outlier_detection:
+    z_score_threshold: 5.0
+    winsorize_limits: [0.01, 0.01] # 1% en cada extremo
+    extreme_outlier_threshold: 50.0
+    apply_winsorizing: true
+    force_reprocessing: false
+
+  # Configuración de escalado
+  scaling:
+    method: "robust" # robust, standard, minmax, quantile
+    outlier_robust: true
+    save_scaler: true
+    verify_scaling: true
+
+# =============================================================================
+# CONFIGURACIÓN DE MODELOS
+# =============================================================================
+models:
+  # XGBoost Configuration (Optimizada)
+  xgboost:
+    # Parámetros base
+    objective: "binary:logistic"
+    eval_metric: "logloss"
+    n_estimators: 300
+    max_depth: 8
+    learning_rate: 0.1
+    subsample: 0.8
+    colsample_bytree: 0.8
+    min_child_weight: 3
+    gamma: 0.1
+    reg_alpha: 0.1
+    reg_lambda: 1.0
+    random_state: 42
+    n_jobs: -1
+    # Early stopping
+    early_stopping_rounds: 50
+    # GPU (si está disponible)
+    tree_method: "auto" # auto, gpu_hist, hist
+
+    # Hyperparameter tuning
+    hyperparameter_tuning:
+      enabled: true
+      method: "optuna" # optuna, randomized, grid
+      n_trials: 100
+      timeout: 3600 # 1 hora
+      cv_folds: 5
+      scoring: "f1"
+
+  # BERT Configuration (Profesional)
+  bert:
+    # Modelo base
+    model_name: "dccuchile/bert-base-spanish-wwm-uncased"
+    model_type: "transformers"
+    num_labels: 2
+    problem_type: "single_label_classification"
+
+    # Tokenización
+    max_length: 512
+    truncation: true
+    padding: true
+    return_tensors: "pt"
+
+    # Entrenamiento
+    training_args:
+      output_dir: "./models/bert_checkpoints"
+      num_train_epochs: 5
+      per_device_train_batch_size: 16
+      per_device_eval_batch_size: 16
+      warmup_steps: 1000
+      weight_decay: 0.01
+      learning_rate: 2.0e-5
+      logging_dir: "./logs/bert"
+      logging_steps: 100
+      evaluation_strategy: "steps"
+      eval_steps: 500
+      save_strategy: "steps"
+      save_steps: 1000
+      load_best_model_at_end: true
+      metric_for_best_model: "eval_f1"
+      greater_is_better: true
+      dataloader_num_workers: 4
+      fp16: true # Mixed precision
+      gradient_accumulation_steps: 2
+
+    # Data augmentation
+    augmentation:
+      enabled: true
+      back_translation: false
+      synonym_replacement: true
+      random_insertion: true
+      random_swap: true
+      random_deletion: true
+
+# =============================================================================
+# CONFIGURACIÓN DE EVALUACIÓN
+# =============================================================================
+evaluation:
+  # Métricas principales
+  primary_metrics: ["f1", "precision", "recall", "accuracy", "auc_roc"]
+
+  # Validación cruzada
+  cross_validation:
+    enabled: true
+    cv_folds: 5
+    stratified: true
+    shuffle: true
+    random_state: 42
+
+  # Configuración de métricas por desbalance
+  imbalance_handling:
+    auto_detect: true
+    severe_threshold: 5.0
+    moderate_threshold: 3.0
+    primary_metric_balanced: "f1"
+    primary_metric_unbalanced: "accuracy"
+    use_class_weight: true
+
+# =============================================================================
+# CONFIGURACIÓN DE EXPLICABILIDAD (XAI)
+# =============================================================================
+explainability:
+  # SHAP
+  shap:
+    enabled: true
+    explainer_type: "tree" # tree, kernel, linear
+    sample_size: 1000
+    generate_plots: true
+    save_values: true
+
+  # LIME
+  lime:
+    enabled: true
+    mode: "tabular"
+    sample_size: 500
+    num_features: 20
+    generate_plots: true
+
+# =============================================================================
+# CONFIGURACIÓN DE LOGGING Y MONITOREO
+# =============================================================================
+logging:
+  level: "INFO" # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file_logging: true
+  console_logging: true
+  max_log_size: "100MB"
+  backup_count: 5
+
+  # Logging específico por componente
+  loggers:
+    data_processing: "INFO"
+    model_training: "INFO"
+    evaluation: "INFO"
+    explainability: "DEBUG"
+
+# =============================================================================
+# CONFIGURACIÓN DE PERFORMANCE
+# =============================================================================
+performance:
+  # Paralelización
+  n_jobs: -1
+  parallel_backend: "threading" # threading, multiprocessing
+
+  # Memoria
+  memory_limit: "8GB"
+  chunk_size: 10000
+  low_memory_mode: false
+
+  # Caché
+  cache:
+    enabled: true
+    backend: "joblib" # joblib, redis, memory
+    compression: 3
+    cache_size: "2GB"
+    ttl: 86400 # 24 horas
+
+  # GPU
+  gpu:
+    enabled: false
+    device: "cuda:0"
+    mixed_precision: true
+
+# =============================================================================
+# CONFIGURACIÓN DE REPRODUCIBILIDAD
+# =============================================================================
+reproducibility:
+  seed: 42
+  deterministic: true
+  benchmark: false
+  set_random_seeds: true
+
+# =============================================================================
+# CONFIGURACIÓN DE PIPELINE
+# =============================================================================
+pipeline:
+  # Etapas del pipeline
+  stages:
+    - data_validation
+    - data_cleaning
+    - outlier_detection
+    - feature_engineering
+    - data_splitting
+    - model_training
+    - model_evaluation
+    - explainability_analysis
+    - results_export
+
+  # Configuración de cada etapa
+  data_validation:
+    strict_mode: true
+    check_data_types: true
+    check_missing_values: true
+    check_duplicates: true
+    check_data_leakage: true
+
+  data_cleaning:
+    drop_high_missing: 0.5
+    imputation_strategy: "median"
+    remove_outliers: false # Usar winsorizing en su lugar
+
+  feature_engineering:
+    create_interaction_features: false
+    polynomial_features: false
+    target_encoding: true
+
+# =============================================================================
+# CONFIGURACIÓN DE EXPORTACIÓN
+# =============================================================================
+export:
+  formats: ["json", "csv", "pickle", "parquet"]
+  compression: "gzip"
+  include_metadata: true
+  versioning: true
+
+# =============================================================================
+# CONFIGURACIÓN DE DESARROLLO Y DEBUG
+# =============================================================================
+development:
+  debug_mode: false
+  profile_performance: false
+  memory_profiling: false
+  sample_data_size: null # null para usar todos los datos
+  quick_test: false
+  verbose: true

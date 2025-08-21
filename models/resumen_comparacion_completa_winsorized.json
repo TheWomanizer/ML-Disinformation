@@ -1,0 +1,19 @@
+{
+  "total_modelos_evaluados": 83,
+  "mejor_modelo_global": {
+    "nombre": "NN High Regularization (100,50)",
+    "f1_score": 0.7021321511505172,
+    "categoria": "Redes_Neuronales"
+  },
+  "modelo_mas_eficiente": {
+    "nombre": "KNN k=5 Uniform",
+    "ratio_eficiencia": 28.426175804014846,
+    "categoria": "Otros_Algoritmos"
+  },
+  "categoria_mas_exitosa": "Redes_Neuronales",
+  "tiempo_promedio_mejores": 31.865931623122272,
+  "f1_score_range": [
+    0.0,
+    0.7021321511505172
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "total_modelos_evaluados": 78,
+  "mejor_modelo_global": {
+    "nombre": "NN Two Classic (100,50)",
+    "f1_score": 0.6955743980537369,
+    "categoria": "Redes_Neuronales"
+  },
+  "modelo_mas_eficiente": {
+    "nombre": "Naive Bayes Complement",
+    "ratio_eficiencia": 28.458832951117888,
+    "categoria": "Otros_Algoritmos"
+  },
+  "categoria_mas_exitosa": "Redes_Neuronales",
+  "tiempo_promedio_mejores": 357.32608422636986,
+  "f1_score_range": [
+    0.0,
+    0.6955743980537369
+  ]
+}

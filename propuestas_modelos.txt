@@ -1,0 +1,64 @@
+# Propuestas de Modelos de Machine Learning
+
+## Dataset 2: Social Media Usage Dataset
+
+**Origen del Dataset:**
+La búsqueda del archivo `social media usage dataset.csv` indica que es un dataset popular en la plataforma Kaggle. Generalmente, se describe como un conjunto de datos sintético o generado a partir de encuestas para estudiantes. Su propósito es educativo, ideal para practicar análisis de datos exploratorios y modelos de clasificación o regresión. Dado que su origen no es un estudio científico riguroso, es perfecto para un proyecto personal, pero se debe tener cautela al extraer conclusiones del mundo real.
+
+**Análisis de Datos:**
+El dataset contiene información demográfica (edad, sexo, campo de estudio) y métricas de uso de redes sociales (plataforma, tiempo de uso diario, seguidores, publicaciones, etc.).
+
+**Modelos Propuestos (Útiles y Avanzados):**
+
+1.  **Regresión para Predecir el Tiempo de Uso Diario:**
+    *   **Objetivo:** Predecir la columna `Hrs` (horas de uso) basándose en otras características.
+    *   **Modelos:**
+        *   **Random Forest Regressor:** Un modelo potente que captura interacciones no lineales complejas. Puede determinar qué factores (ej. edad, número de cuentas, campo de estudio) son más importantes para predecir el tiempo de uso.
+        *   **Gradient Boosting (XGBoost, LightGBM):** Modelos de alto rendimiento, muy usados en competencias. Son excelentes para maximizar la precisión predictiva y son muy valorados en proyectos de portafolio.
+        *   **Regresión Polinómica con Regularización (Ridge o Lasso):** Permite capturar relaciones no lineales (ej. el tiempo de uso no aumenta linealmente con la edad) pero manteniendo el modelo más interpretable que los ensambles.
+
+2.  **Clasificación Multiclase para Predecir la Plataforma Principal:**
+    *   **Objetivo:** Predecir la columna `Daily_used` (plataforma principal) a partir de los datos del usuario.
+    *   **Modelos:**
+        *   **Random Forest Classifier:** Muy eficaz para problemas de clasificación con datos tabulares como este.
+        *   **Support Vector Machine (SVM) con Kernel:** Particularmente útil si los límites de decisión entre las clases son complejos y no lineales.
+        *   **Red Neuronal simple (con Keras/TensorFlow):** Implementar una red neuronal densa sería un excelente proyecto de aprendizaje. Puede capturar patrones muy complejos y es una habilidad muy demandada.
+
+3.  **Clustering para Segmentación de Usuarios:**
+    *   **Objetivo:** Descubrir arquetipos de usuarios sin usar etiquetas predefinidas (aprendizaje no supervisado). Por ejemplo: "Usuarios Pasivos", "Creadores de Contenido", "Usuarios Sociales".
+    *   **Modelos:**
+        *   **K-Means:** Algoritmo fundamental para empezar. Se deben escalar las características numéricas primero.
+        *   **DBSCAN:** Útil para encontrar grupos de formas no esféricas y para identificar "ruido" (usuarios atípicos que no pertenecen a ningún grupo).
+        *   **Análisis de Componentes Principales (PCA) + Clustering:** Usar PCA para reducir la dimensionalidad de los datos a 2 o 3 componentes y luego visualizar los clusters. Esto es muy potente para la comunicación de resultados.
+
+---
+
+## Dataset 1: Fake News Detection
+
+**Origen del Dataset:**
+Según el archivo `readme.txt`, este dataset está diseñado para la detección de noticias falsas (Fake News). Contiene dos archivos principales:
+- `Truth_Seeker_Model_Dataset.csv`: Incluye la declaración (noticia), su autor, y etiquetas de veracidad.
+- `Features_For_Traditional_ML_Techniques.csv`: Contiene características pre-extraídas de las noticias, como métricas lingüísticas (conteo de verbos, adjetivos), de sentimiento, y características del autor (seguidores, amigos), listas para ser usadas en modelos de ML tradicionales.
+
+**Modelos Propuestos (Útiles y Avanzados):**
+
+1.  **Clasificación de Noticias con Features Pre-extraídas:**
+    *   **Datos:** `Features_For_Traditional_ML_Techniques.csv`.
+    *   **Objetivo:** Clasificar una noticia como falsa o verdadera (`BinaryNumTarget`) usando las características dadas.
+    *   **Modelos:**
+        *   **Random Forest / Gradient Boosting (XGBoost):** Son los modelos de referencia para datos tabulares estructurados. Permitirán no solo obtener una alta precisión, sino también analizar la importancia de las características (`feature_importance`) para entender qué señales delatan una noticia falsa.
+        *   **Red Neuronal Densa:** Al igual que con el otro dataset, construir una red neuronal para este problema de clasificación binaria es un proyecto muy relevante y moderno.
+        *   **Calibración de Modelos (CalibratedClassifierCV):** Un paso avanzado. Después de entrenar un clasificador (ej. XGBoost), se puede calibrar para que las probabilidades que predice reflejen mejor la probabilidad real. Esto es importante en aplicaciones críticas.
+
+2.  **Clasificación Basada en el Texto del Tweet/Noticia (NLP):**
+    *   **Datos:** Columna `statement` o `tweet`.
+    *   **Objetivo:** Clasificar la noticia basándose únicamente en su contenido textual.
+    *   **Pasos Previos:** Requiere pre-procesamiento de texto (limpieza, tokenización) y vectorización.
+    *   **Modelos:**
+        *   **TF-IDF + Logistic Regression/SVM:** Un pipeline clásico y muy potente para clasificación de texto. Es un baseline muy fuerte.
+        *   **Word Embeddings (Word2Vec, GloVe) + LSTM/GRU:** Un enfoque más avanzado usando redes neuronales recurrentes. Aprende el significado semántico y la secuencia de las palabras, lo que puede llevar a un mejor rendimiento. Es un excelente proyecto de NLP.
+        *   **Modelos de Transformers (BERT):** El estado del arte en NLP. Utilizar un modelo pre-entrenado como BERT (ej. `bert-base-uncased` o una versión en español si aplica) y ajustarlo (`fine-tuning`) a tus datos. Este es un proyecto de alto nivel que sin duda destacaría en un portafolio.
+
+3.  **Análisis de Credibilidad de la Fuente:**
+    *   **Objetivo:** Evaluar si la credibilidad del autor (`author`) es un buen predictor de la veracidad.
+    *   **Enfoque:** Se podría agrupar por autor y calcular su "tasa de veracidad" histórica. Luego, usar esta tasa como una nueva característica en los modelos del punto 1. Esto imita la idea de los modelos "Truth Seeker" de forma simplificada.

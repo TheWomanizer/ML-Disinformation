@@ -1,0 +1,61 @@
+# Propuesta de Proyecto: Análisis Comparativo de Modelos de Machine Learning para Detección de Noticias Falsas y Caracterización de Uso de Redes Sociales
+
+## 1. Resumen del Proyecto
+
+Este proyecto aborda dos problemas actuales y relevantes mediante la ciencia de datos: la desinformación en línea y la comprensión del comportamiento en redes sociales. Se utilizarán dos datasets distintos para construir, entrenar y evaluar un amplio espectro de modelos de Machine Learning. El objetivo es realizar un análisis comparativo exhaustivo que determine qué técnicas son más efectivas para cada tarea específica, abarcando desde modelos de regresión y clasificación tradicionales hasta redes neuronales profundas y modelos avanzados de Procesamiento de Lenguaje Natural (NLP).
+
+## 2. Objetivos
+
+### 2.1. Objetivo General
+
+Desarrollar y evaluar comparativamente una suite de modelos de Machine Learning para resolver tareas de clasificación, regresión y clustering en los dominios de detección de noticias falsas y análisis de uso de redes sociales.
+
+### 2.2. Objetivos Específicos
+
+1.  Realizar un Análisis Exploratorio de Datos (EDA) completo para ambos datasets para entender sus características, distribuciones y relaciones.
+2.  Para el **Dataset de Uso de Redes Sociales**:
+    *   Implementar y comparar modelos de **regresión** (Lineal, Random Forest, Gradient Boosting) para predecir el tiempo de uso diario.
+    *   Implementar y comparar modelos de **clasificación** (Regresión Logística, Random Forest, Red Neuronal Densa) para predecir la plataforma de redes sociales preferida por un usuario.
+3.  Para el **Dataset de Detección de Noticias Falsas**:
+    *   Implementar y comparar modelos de **clasificación** (Random Forest, XGBoost) utilizando las características pre-calculadas del dataset.
+    *   Desarrollar un pipeline de **Procesamiento de Lenguaje Natural (NLP)** para procesar el texto crudo de las noticias.
+    *   Implementar y comparar modelos basados en NLP (TF-IDF con SVM, Redes Neuronales Recurrentes - LSTM, y Fine-tuning de un Transformer - BERT) para detectar noticias falsas a partir de su contenido textual.
+4.  Evaluar el rendimiento de todos los modelos utilizando métricas apropiadas (R², MAE para regresión; Accuracy, F1-Score, Matriz de Confusión para clasificación).
+5.  Documentar el proceso, los resultados y las conclusiones en un informe final, destacando las fortalezas y debilidades de cada enfoque.
+
+## 3. Metodología y Fases del Proyecto
+
+El proyecto se dividirá en las siguientes fases:
+
+### Fase 1: Configuración y Análisis Exploratorio de Datos (EDA)
+*   **Actividad 1.1:** Preparación del entorno de trabajo, instalación de librerías (Pandas, Scikit-learn, TensorFlow/Keras, Transformers, etc.) en el entorno `.venv`.
+*   **Actividad 1.2:** Carga de ambos datasets.
+*   **Actividad 1.3:** Análisis estadístico y visualización de los datos para identificar patrones, correlaciones y valores atípicos.
+
+### Fase 2: Modelado - Dataset de Uso de Redes Sociales
+*   **Actividad 2.1 (Regresión):**
+    *   Preprocesamiento de datos (escalado de características, codificación de variables categóricas).
+    *   Entrenamiento y evaluación de: Random Forest Regressor y XGBoost Regressor.
+*   **Actividad 2.2 (Clasificación):**
+    *   Preprocesamiento de datos.
+    *   Entrenamiento y evaluación de: Random Forest Classifier y una Red Neuronal Densa (MLP).
+
+### Fase 3: Modelado - Dataset de Detección de Noticias Falsas
+*   **Actividad 3.1 (Clasificación con Features existentes):**
+    *   Preprocesamiento de los datos del archivo `Features_For_Traditional_ML_Techniques.csv`.
+    *   Entrenamiento y evaluación de: Random Forest Classifier y XGBoost Classifier.
+*   **Actividad 3.2 (Clasificación con NLP):**
+    *   Preprocesamiento del texto de las columnas `statement` y `tweet`.
+    *   **Enfoque 1 (Clásico):** Vectorización con TF-IDF y entrenamiento de un clasificador SVM.
+    *   **Enfoque 2 (Redes Neuronales Recurrentes):** Creación de embeddings y entrenamiento de un modelo LSTM.
+    *   **Enfoque 3 (Estado del Arte):** Fine-tuning de un modelo Transformer pre-entrenado (ej. DistilBERT) para la tarea de clasificación.
+
+### Fase 4: Evaluación Comparativa y Conclusiones
+*   **Actividad 4.1:** Recopilación y tabulación de los resultados de todos los modelos.
+*   **Actividad 4.2:** Comparación gráfica del rendimiento según las métricas definidas.
+*   **Actividad 4.3:** Redacción del informe final (`proyecto.pdf`) con el análisis de los resultados, las conclusiones sobre qué modelos funcionaron mejor para cada tarea y las posibles líneas de trabajo futuro.
+
+## 4. Entregables
+1.  **Anteproyecto.pdf:** Este mismo documento, formalizado.
+2.  **Código Fuente:** Scripts de Python o Jupyter Notebooks organizados por fase y por dataset.
+3.  **Proyecto.pdf:** Informe final detallado con la metodología, resultados y conclusiones del estudio comparativo.

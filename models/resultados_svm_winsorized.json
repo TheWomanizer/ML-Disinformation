@@ -1,0 +1,152 @@
+{
+  "LinearSVC_Basic": {
+    "nombre": "LinearSVC Basic (C=1.0)",
+    "tipo_svm": "LinearSVC",
+    "parametros": {
+      "C": 1.0,
+      "class_weight": null,
+      "dual": false,
+      "fit_intercept": true,
+      "intercept_scaling": 1,
+      "loss": "squared_hinge",
+      "max_iter": 2000,
+      "multi_class": "ovr",
+      "penalty": "l2",
+      "random_state": 42,
+      "tol": 0.0001,
+      "verbose": 0
+    },
+    "calibrado": true,
+    "tiempo_entrenamiento": 6.067838430404663,
+    "n_support_vectors": null,
+    "metricas": {
+      "accuracy": 0.6406110283159463,
+      "precision": 0.6446743080793962,
+      "recall": 0.6690845785579573,
+      "f1": 0.6566526660496903,
+      "roc_auc": 0.6922342808369506
+    },
+    "cv_f1_mean": 0.65050158629159,
+    "cv_f1_std": 0.003407337579974547
+  },
+  "LinearSVC_LowReg": {
+    "nombre": "LinearSVC Low Reg (C=10.0)",
+    "tipo_svm": "LinearSVC",
+    "parametros": {
+      "C": 10.0,
+      "class_weight": null,
+      "dual": false,
+      "fit_intercept": true,
+      "intercept_scaling": 1,
+      "loss": "squared_hinge",
+      "max_iter": 2000,
+      "multi_class": "ovr",
+      "penalty": "l2",
+      "random_state": 42,
+      "tol": 0.0001,
+      "verbose": 0
+    },
+    "calibrado": true,
+    "tiempo_entrenamiento": 5.7771666049957275,
+    "n_support_vectors": null,
+    "metricas": {
+      "accuracy": 0.6406482861400894,
+      "precision": 0.6446991404011462,
+      "recall": 0.6691571159146961,
+      "f1": 0.6567004805125467,
+      "roc_auc": 0.6922363534916207
+    },
+    "cv_f1_mean": 0.6504777453782553,
+    "cv_f1_std": 0.003396631821695455
+  },
+  "LinearSVC_HighReg": {
+    "nombre": "LinearSVC High Reg (C=0.1)",
+    "tipo_svm": "LinearSVC",
+    "parametros": {
+      "C": 0.1,
+      "class_weight": null,
+      "dual": false,
+      "fit_intercept": true,
+      "intercept_scaling": 1,
+      "loss": "squared_hinge",
+      "max_iter": 2000,
+      "multi_class": "ovr",
+      "penalty": "l2",
+      "random_state": 42,
+      "tol": 0.0001,
+      "verbose": 0
+    },
+    "calibrado": true,
+    "tiempo_entrenamiento": 5.182664394378662,
+    "n_support_vectors": null,
+    "metricas": {
+      "accuracy": 0.6405737704918033,
+      "precision": 0.6447304007273236,
+      "recall": 0.6687218917742638,
+      "f1": 0.656507032223607,
+      "roc_auc": 0.6922149768092725
+    },
+    "cv_f1_mean": 0.650561872244654,
+    "cv_f1_std": 0.0032984405625678614
+  },
+  "LinearSVC_L1": {
+    "nombre": "LinearSVC L1 Penalty (C=1.0)",
+    "tipo_svm": "LinearSVC",
+    "parametros": {
+      "C": 1.0,
+      "class_weight": null,
+      "dual": false,
+      "fit_intercept": true,
+      "intercept_scaling": 1,
+      "loss": "squared_hinge",
+      "max_iter": 2000,
+      "multi_class": "ovr",
+      "penalty": "l1",
+      "random_state": 42,
+      "tol": 0.0001,
+      "verbose": 0
+    },
+    "calibrado": true,
+    "tiempo_entrenamiento": 60.41230320930481,
+    "n_support_vectors": null,
+    "metricas": {
+      "accuracy": 0.6406855439642325,
+      "precision": 0.6448049223884771,
+      "recall": 0.6689395038444799,
+      "f1": 0.6566505269154087,
+      "roc_auc": 0.692197200878201
+    },
+    "cv_f1_mean": 0.6505255746600056,
+    "cv_f1_std": 0.0033781312903898315
+  },
+  "LinearSVC_Balanced": {
+    "nombre": "LinearSVC Balanced (C=1.0)",
+    "tipo_svm": "LinearSVC",
+    "parametros": {
+      "C": 1.0,
+      "class_weight": "balanced",
+      "dual": false,
+      "fit_intercept": true,
+      "intercept_scaling": 1,
+      "loss": "squared_hinge",
+      "max_iter": 2000,
+      "multi_class": "ovr",
+      "penalty": "l2",
+      "random_state": 42,
+      "tol": 0.0001,
+      "verbose": 0
+    },
+    "calibrado": true,
+    "tiempo_entrenamiento": 5.3677589893341064,
+    "n_support_vectors": null,
+    "metricas": {
+      "accuracy": 0.6406110283159463,
+      "precision": 0.6448160067161046,
+      "recall": 0.6685768170607863,
+      "f1": 0.6564814814814814,
+      "roc_auc": 0.6922282017908137
+    },
+    "cv_f1_mean": 0.6398519065948929,
+    "cv_f1_std": 0.0035451529507929155
+  }
+}

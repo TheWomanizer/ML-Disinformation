@@ -1,0 +1,55 @@
+# Librerías Core de Data Science
+pandas>=1.5.0
+numpy>=1.21.0
+matplotlib>=3.5.0
+seaborn>=0.11.0
+plotly>=5.10.0
+scipy>=1.9.0
+
+# Machine Learning Tradicional - Algoritmos Core
+scikit-learn>=1.1.0
+xgboost>=1.6.0
+lightgbm>=3.3.0
+catboost>=1.0.0
+
+# Machine Learning - Algoritmos Adicionales
+imbalanced-learn>=0.9.0
+
+# Deep Learning y NLP
+torch>=1.12.0
+transformers>=4.20.0
+datasets>=2.3.0
+accelerate>=0.12.0
+tensorflow>=2.14.0
+
+# Análisis de Texto y NLP
+spacy>=3.4.0
+nltk>=3.7.0
+textblob>=0.17.0
+
+# Explicabilidad (XAI)
+shap>=0.41.0
+lime>=0.2.0
+eli5>=0.13.0
+
+# Métricas y Evaluación Avanzada
+yellowbrick>=1.5.0
+
+# Utilidades de Desarrollo
+tqdm>=4.64.0
+jupyter>=1.0.0
+ipywidgets>=7.7.0
+joblib>=1.1.0
+
+# Visualización Avanzada
+wordcloud>=1.8.0
+
+# Para manejo de datos grandes
+dask>=2022.7.0
+
+# Detección de valores atípicos
+pyod>=1.0.0
+
+# Validación y Testing
+pytest>=7.0.0
+pytest-cov>=4.0.0

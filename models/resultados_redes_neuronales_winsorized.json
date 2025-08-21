@@ -1,0 +1,278 @@
+{
+  "NN_Tiny_50": {
+    "nombre": "NN Tiny (50)",
+    "arquitectura": [
+      50
+    ],
+    "solver": "adam",
+    "activation": "relu",
+    "alpha": 0.001,
+    "max_iter": 500,
+    "n_iter_real": 44,
+    "converged": true,
+    "tiempo_entrenamiento": 14.141207456588745,
+    "metricas": {
+      "accuracy": 0.6814828614008942,
+      "precision": 0.6949884578151762,
+      "recall": 0.6769911504424779,
+      "f1": 0.6858717618960132,
+      "roc_auc": 0.745316383900632
+    },
+    "cv_f1_mean": 0.6722082042837381,
+    "cv_f1_std": 0.004308380122640826
+  },
+  "NN_Small_100": {
+    "nombre": "NN Small (100)",
+    "arquitectura": [
+      100
+    ],
+    "solver": "adam",
+    "activation": "relu",
+    "alpha": 0.001,
+    "max_iter": 500,
+    "n_iter_real": 31,
+    "converged": true,
+    "tiempo_entrenamiento": 12.184841394424438,
+    "metricas": {
+      "accuracy": 0.6790983606557377,
+      "precision": 0.6863338376197681,
+      "recall": 0.6910633976497896,
+      "f1": 0.6886904977048469,
+      "roc_auc": 0.7468330725715195
+    },
+    "cv_f1_mean": 0.6791730234124943,
+    "cv_f1_std": 0.0011066341186934362
+  },
+  "NN_Small_Tanh": {
+    "nombre": "NN Small Tanh (100)",
+    "arquitectura": [
+      100
+    ],
+    "solver": "adam",
+    "activation": "tanh",
+    "alpha": 0.001,
+    "max_iter": 500,
+    "n_iter_real": 38,
+    "converged": true,
+    "tiempo_entrenamiento": 15.53402829170227,
+    "metricas": {
+      "accuracy": 0.6745529061102832,
+      "precision": 0.69119539707775,
+      "recall": 0.6622660670245176,
+      "f1": 0.6764215595480645,
+      "roc_auc": 0.7431607785900041
+    },
+    "cv_f1_mean": 0.6761468346267592,
+    "cv_f1_std": 0.0020351475202624388
+  },
+  "NN_Two_Classic": {
+    "nombre": "NN Two Classic (100,50)",
+    "arquitectura": [
+      100,
+      50
+    ],
+    "solver": "adam",
+    "activation": "relu",
+    "alpha": 0.001,
+    "max_iter": 600,
+    "n_iter_real": 32,
+    "converged": true,
+    "tiempo_entrenamiento": 18.96012282371521,
+    "metricas": {
+      "accuracy": 0.6788375558867362,
+      "precision": 0.6968149954282231,
+      "recall": 0.6633541273755984,
+      "f1": 0.6796729840208101,
+      "roc_auc": 0.7493191190490833
+    },
+    "cv_f1_mean": 0.6770443096921861,
+    "cv_f1_std": 0.007362001271372252
+  },
+  "NN_Two_Symmetric": {
+    "nombre": "NN Two Symmetric (80,80)",
+    "arquitectura": [
+      80,
+      80
+    ],
+    "solver": "adam",
+    "activation": "relu",
+    "alpha": 0.001,
+    "max_iter": 600,
+    "n_iter_real": 28,
+    "converged": true,
+    "tiempo_entrenamiento": 21.39433455467224,
+    "metricas": {
+      "accuracy": 0.686177347242921,
+      "precision": 0.69143999428857,
+      "recall": 0.7025243000145075,
+      "f1": 0.6969380779332925,
+      "roc_auc": 0.7546956130469088
+    },
+    "cv_f1_mean": 0.670641811724489,
+    "cv_f1_std": 0.006710563602733478
+  },
+  "NN_Bottleneck": {
+    "nombre": "NN Bottleneck (120,30)",
+    "arquitectura": [
+      120,
+      30
+    ],
+    "solver": "adam",
+    "activation": "relu",
+    "alpha": 0.001,
+    "max_iter": 600,
+    "n_iter_real": 23,
+    "converged": true,
+    "tiempo_entrenamiento": 22.387328624725342,
+    "metricas": {
+      "accuracy": 0.6807749627421759,
+      "precision": 0.6979514415781487,
+      "recall": 0.6672711446394893,
+      "f1": 0.6822665578877104,
+      "roc_auc": 0.7507765397984927
+    },
+    "cv_f1_mean": 0.6809234040937309,
+    "cv_f1_std": 0.00392350764201547
+  },
+  "NN_Deep_Decreasing": {
+    "nombre": "NN Deep Decreasing (150,100,50)",
+    "arquitectura": [
+      150,
+      100,
+      50
+    ],
+    "solver": "adam",
+    "activation": "relu",
+    "alpha": 0.01,
+    "max_iter": 800,
+    "n_iter_real": 24,
+    "converged": true,
+    "tiempo_entrenamiento": 65.58761477470398,
+    "metricas": {
+      "accuracy": 0.6868107302533532,
+      "precision": 0.7006564224973892,
+      "recall": 0.6813433918468011,
+      "f1": 0.690864960282436,
+      "roc_auc": 0.7569705488107286
+    },
+    "cv_f1_mean": 0.6855360937314409,
+    "cv_f1_std": 0.0057661666071508475
+  },
+  "NN_Deep_Uniform": {
+    "nombre": "NN Deep Uniform (100,100,100)",
+    "arquitectura": [
+      100,
+      100,
+      100
+    ],
+    "solver": "adam",
+    "activation": "relu",
+    "alpha": 0.01,
+    "max_iter": 800,
+    "n_iter_real": 21,
+    "converged": true,
+    "tiempo_entrenamiento": 47.33445334434509,
+    "metricas": {
+      "accuracy": 0.6820044709388972,
+      "precision": 0.6890072708948239,
+      "recall": 0.6942550413462933,
+      "f1": 0.6916212017198395,
+      "roc_auc": 0.7536637644240929
+    },
+    "cv_f1_mean": 0.6821307246226194,
+    "cv_f1_std": 0.006627568288512888
+  },
+  "NN_Diamond": {
+    "nombre": "NN Diamond (80,120,80)",
+    "arquitectura": [
+      80,
+      120,
+      80
+    ],
+    "solver": "adam",
+    "activation": "relu",
+    "alpha": 0.01,
+    "max_iter": 800,
+    "n_iter_real": 24,
+    "converged": true,
+    "tiempo_entrenamiento": 40.25841450691223,
+    "metricas": {
+      "accuracy": 0.6833830104321907,
+      "precision": 0.6979931106784484,
+      "recall": 0.6761207021616132,
+      "f1": 0.6868828297715549,
+      "roc_auc": 0.7528230723516958
+    },
+    "cv_f1_mean": 0.6807560416081709,
+    "cv_f1_std": 0.0050510790369249076
+  },
+  "NN_SGD": {
+    "nombre": "NN SGD Momentum (100,50)",
+    "arquitectura": [
+      100,
+      50
+    ],
+    "solver": "sgd",
+    "activation": "relu",
+    "alpha": 0.001,
+    "max_iter": 1000,
+    "n_iter_real": 159,
+    "converged": true,
+    "tiempo_entrenamiento": 129.82211136817932,
+    "metricas": {
+      "accuracy": 0.67924739195231,
+      "precision": 0.6940259350873248,
+      "recall": 0.6716233860438126,
+      "f1": 0.6826409112692152,
+      "roc_auc": 0.7441435447498146
+    },
+    "cv_f1_mean": 0.6743654937330998,
+    "cv_f1_std": 0.005680395199421659
+  },
+  "NN_High_Reg": {
+    "nombre": "NN High Regularization (100,50)",
+    "arquitectura": [
+      100,
+      50
+    ],
+    "solver": "adam",
+    "activation": "relu",
+    "alpha": 0.1,
+    "max_iter": 600,
+    "n_iter_real": 39,
+    "converged": true,
+    "tiempo_entrenamiento": 33.03707766532898,
+    "metricas": {
+      "accuracy": 0.684575260804769,
+      "precision": 0.6817436458048647,
+      "recall": 0.7237777455389526,
+      "f1": 0.7021321511505172,
+      "roc_auc": 0.7589543293821905
+    },
+    "cv_f1_mean": 0.6845462830670594,
+    "cv_f1_std": 0.004988077966162204
+  },
+  "NN_Low_Reg": {
+    "nombre": "NN Low Regularization (100,50)",
+    "arquitectura": [
+      100,
+      50
+    ],
+    "solver": "adam",
+    "activation": "relu",
+    "alpha": 0.0001,
+    "max_iter": 600,
+    "n_iter_real": 26,
+    "converged": true,
+    "tiempo_entrenamiento": 17.273218154907227,
+    "metricas": {
+      "accuracy": 0.6811102831594635,
+      "precision": 0.7041637372080306,
+      "recall": 0.653851733642826,
+      "f1": 0.6780757513070298,
+      "roc_auc": 0.752078767056531
+    },
+    "cv_f1_mean": 0.6791406536095078,
+    "cv_f1_std": 0.007135901349922917
+  }
+}
