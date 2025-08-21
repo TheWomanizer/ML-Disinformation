@@ -65,8 +65,8 @@ Para replicar el proyecto, siga los pasos delineados en los Jupyter Notebooks en
 
 ## Autores y Contribuciones
 
-- **Autor Principal:** Jose Alejandro Jimenez Vasquez : jajimenez4@eafit.edu.co
+- **Autor:** Jose Alejandro Jimenez Vasquez
+- **Correo:** jajimenez4@eafit.edu.co
 
 ---
 
-Este `README.md` fue generado como parte del proceso de desarrollo.
