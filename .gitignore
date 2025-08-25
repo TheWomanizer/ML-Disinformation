@@ -1,0 +1,22 @@
+# Entornos virtuales
+.venv/
+venv/
+
+# Archivos temporales de Python
+__pycache__/
+*.py[cod]
+*.so
+
+# Archivos de Jupyter
+.ipynb_checkpoints/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos grandes que no quieres subir (si no están en LFS)
+*.log
+*.tmp
+
+# Archivos de modelos pesados
+*.pth
