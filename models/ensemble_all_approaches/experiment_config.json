@@ -1,12 +1,3 @@
-{
-  "dataset_shape": [
-    1058,
-    59
-  ],
-  "target_column": "BinaryNumTarget",
-  "text_column": "statement",
-  "n_features": 1848,
-  "train_size": 846,
-  "test_size": 212,
-  "timestamp": "2025-08-24T19:45:25.447814"
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:e64c7395a9719ac736f4e6811d627b084afe997af182c39af5b78f3687caf2b4
+size 232

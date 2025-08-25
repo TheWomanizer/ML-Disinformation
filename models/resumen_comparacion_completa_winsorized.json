@@ -1,19 +1,3 @@
-{
-  "total_modelos_evaluados": 83,
-  "mejor_modelo_global": {
-    "nombre": "XGBoost Aggressive",
-    "f1_score": 0.7155734701355808,
-    "categoria": "Boosting"
-  },
-  "modelo_mas_eficiente": {
-    "nombre": "KNN k=5 Uniform",
-    "ratio_eficiencia": 28.426175804014846,
-    "categoria": "Otros_Algoritmos"
-  },
-  "categoria_mas_exitosa": "Redes_Neuronales",
-  "tiempo_promedio_mejores": 28.621649503707886,
-  "f1_score_range": [
-    0.5640233814933274,
-    0.7155734701355808
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:ec8cb0d9c159ca2f0acb6b2b26fd75a9ecc7b037f8fce0e7754e9f5a436fa318
+size 501
