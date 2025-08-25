@@ -1,0 +1,38 @@
+{
+  "distilbert": {
+    "metrics": {
+      "eval_accuracy": 0.8588235294117647,
+      "eval_f1": 0.875,
+      "eval_precision": 0.8484848484848485,
+      "eval_recall": 0.9032258064516129
+    },
+    "model_base": "distilbert-base-uncased"
+  },
+  "albert": {
+    "metrics": {
+      "eval_accuracy": 0.8,
+      "eval_f1": 0.8172043010752689,
+      "eval_precision": 0.8172043010752689,
+      "eval_recall": 0.8172043010752689
+    },
+    "model_base": "albert-base-v2"
+  },
+  "bert-base": {
+    "metrics": {
+      "eval_accuracy": 0.8529411764705882,
+      "eval_f1": 0.8743718592964824,
+      "eval_precision": 0.8207547169811321,
+      "eval_recall": 0.9354838709677419
+    },
+    "model_base": "bert-base-uncased"
+  },
+  "roberta": {
+    "metrics": {
+      "eval_accuracy": 0.8647058823529412,
+      "eval_f1": 0.8808290155440415,
+      "eval_precision": 0.85,
+      "eval_recall": 0.9139784946236559
+    },
+    "model_base": "roberta-base"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "dataset_shape": [
+    1058,
+    59
+  ],
+  "target_column": "BinaryNumTarget",
+  "text_column": "statement",
+  "n_features": 1848,
+  "train_size": 846,
+  "test_size": 212,
+  "timestamp": "2025-08-24T19:45:25.447814"
+}

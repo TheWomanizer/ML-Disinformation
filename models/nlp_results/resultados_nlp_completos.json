@@ -1,0 +1,30 @@
+{
+  "timestamp": "2025-08-21 20:40:04",
+  "models": {
+    "logistic_regression": {
+      "f1_score": 0.9992745738121146,
+      "accuracy": 0.9992548435171386,
+      "precision": 0.9993470690655832,
+      "recall": 0.999202089075874,
+      "roc_auc": 0.9999833576387749,
+      "cv_f1_mean": 0.9987489291343072,
+      "training_time": 2.155334
+    },
+    "svm_linear": {
+      "f1_score": 0.9995284558743516,
+      "accuracy": 0.99951564828614,
+      "precision": 0.9996372342741058,
+      "recall": 0.9994197011460902,
+      "cv_f1_mean": 0.9993290185318544,
+      "training_time": 1.180793
+    }
+  },
+  "best_model": "SVM",
+  "best_f1_score": 0.9995284558743516,
+  "data_info": {
+    "total_samples": 134198,
+    "train_samples": 107358,
+    "test_samples": 26840,
+    "vocabulary_size": 10000
+  }
+}
