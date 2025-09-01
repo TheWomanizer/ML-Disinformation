@@ -1,72 +1,46 @@
-# Sistema Integral Multi-Capa para la Detección de Desinformación
+# Sistema Integral para la Detección de Desinformación
+### O: La historia de cómo un mega-ensamble de 16 modelos compitió contra RoBERTa y vivió para contarlo.
 
-Este repositorio contiene el código fuente y los recursos para un proyecto de Machine Learning enfocado en la detección de noticias falsas. El sistema va más allá de una simple clasificación binaria, implementando un enfoque holístico que busca responder a tres preguntas clave:
+Este repositorio es el recuento del viaje que fue mi proyecto final del Diplomado de Machine Learning. Lo que empezó como una misión para detectar noticias falsas se convirtió en una odisea a través de docenas de modelos, una batalla campal contra el *data leakage* y, finalmente, una valiosa lección sobre la eficiencia de los Transformers.
 
-1.  **¿QUÉ?** -> ¿Es esta noticia falsa o verdadera? (Clasificación de Contenido)
-2.  **¿QUIÉN?** -> ¿La fuente que publica la noticia es creíble? ¿Es un bot? (Análisis de la Fuente)
-3.  **¿POR QUÉ?** -> ¿Qué factores llevaron al sistema a su conclusión? (Explicabilidad)
+## La Trama Principal: 'The Real Slim Ensemble' vs. RoBERTa
 
-El objetivo es desarrollar un prototipo de sistema robusto, interpretable y multi-capa, utilizando una combinación de modelos de Machine Learning tradicionales y técnicas avanzadas de Procesamiento de Lenguaje Natural (NLP).
+Se construyó "The Real Slim Ensemble", una ambiciosa arquitectura de 16 modelos apilados con la meta de ser la solución definitiva a la desinformación. ¿El resultado? Un sólido F1-Score de **0.8870**.
 
-## Metodología
+Nada mal, ¿no? El giro de la trama es que un único modelo, **RoBERTa**, sin todo el andamiaje, alcanzó por su cuenta un **0.8889**.
 
-El proyecto se desarrolla a través de varias fases, desde la preparación de datos hasta la evaluación de modelos complejos:
+La conclusión fue fascinante: después de un esfuerzo considerable, el complejo ensamble fue como una orquesta sinfónica compitiendo contra un virtuoso solista. Una gran lección y una historia que vale la pena compartir.
 
-1.  **Análisis Exploratorio y Limpieza de Datos (Fase 0):** Se realiza una limpieza exhaustiva de los datos, incluyendo la validación semántica de ceros y nulos, análisis de desbalance de clases, y la separación de datos para modelado tradicional y NLP. Un desafío clave identificado en esta fase es el manejo de **outliers extremos** en variables numéricas, para lo cual se implementan técnicas como el _Winsorizing_.
+## Lecciones Aprendidas en la Trinchera (Hallazgos Clave)
 
-2.  **Modelado de Clasificación de Contenido (Fase 1):** Se construyen y evalúan dos tipos de modelos principales:
+- **RoBERTa es un Titán:** Para esta tarea, los modelos Transformers demostraron estar en una categoría propia. El rendimiento que ofrecen de base es formidable.
+- **Más No Siempre es Mejor:** Este proyecto es un caso de estudio. Apilar modelos más débiles sobre uno muy fuerte puede no generar una mejora neta si introducen más ruido que señal.
+- **El Preprocesamiento es Ley:** Sin una corrección rigurosa del *data leakage* (pasando de 134k a 1k de filas para NLP), las métricas no son confiables. Un paso doloroso pero indispensable para obtener resultados realistas.
+- **Winsorizing al Rescate:** Ante datos con valores extremos, la técnica de *Winsorizing* fue una herramienta clave para estabilizar los modelos y reducir la influencia de outliers.
 
-    - **Modelo con Features Tradicionales:** Utiliza un clasificador `XGBoost` sobre 58 características numéricas pre-calculadas que describen el texto y el comportamiento del autor.
-    - **Modelo con NLP:** Emplea un modelo Transformer (BERT), específicamente `dccuchile/bert-base-spanish-wwm-uncased`, para realizar una clasificación basada en la semántica y el contexto del texto de las noticias y tweets.
+## El Mapa de la Aventura (Estructura del Repositorio)
 
-3.  **Análisis de la Fuente y Explicabilidad (Fases Futuras):** Las fases posteriores del proyecto se centran en evaluar la credibilidad de la fuente y en implementar técnicas de XAI (Explainable AI) como SHAP o LIME para interpretar las predicciones de los modelos.
+- **[`PROYECTO.md`](PROYECTO.md)**: La bitácora completa del viaje. Contiene cada detalle del proceso y los análisis. **(Haz clic aquí para leer la historia completa)**
+- **`notebooks/`**: Las etapas de la expedición. Nueve notebooks, numerados del `01` al `09`. Se recomienda seguirlos en orden para entender la historia.
+- **`models/`**, **`processed_data/`**, etc.: El equipo y los artefactos recuperados. Modelos, datos limpios y otros recursos.
 
-## Estructura del Repositorio
+## ¿Quieres Replicar la Expedición?
 
-El proyecto está organizado de la siguiente manera:
+1.  Clona este repositorio.
+2.  Crea un entorno virtual (es una buena práctica).
+3.  Instala las dependencias desde la carpeta `notebooks`:
+    ```bash
+    pip install -r notebooks/requirements.txt
+    ```
+4.  Ejecuta los notebooks en orden numérico, empezando por el `01`.
 
-```
-.
-├── config/
-│   └── config.yaml
-├── dataset1/
-│   ├── Features_For_Traditional_ML_Techniques.csv
-│   ├── Truth_Seeker_Model_Dataset.csv
-│   └── readme.txt
-├── dataset2/
-│   └── social media usage dataset.csv
-├── models/
-│   ├── ... (modelos guardados y resultados)
-├── notebooks/
-│   ├── 01_exploracion_inicial.ipynb
-│   ├── 02_limpieza_datos.ipynb
-│   ├── ... (notebooks para cada fase del modelado)
-├── processed_data/
-│   ├── dataset_features_processed.csv
-│   └── ... (datos limpios y listos para modelar)
-├── ANTEPROYECTO.pdf
-├── PROYECTO_GUIA.md
-└── README.md
-```
+## Una Pequeña Invitación
 
-- **config/**: Archivos de configuración.
-- **dataset1/**: Dataset principal para la detección de desinformación.
-- **dataset2/**: Dataset secundario para análisis de uso de redes sociales.
-- **models/**: Almacena los modelos entrenados, comparaciones y resultados.
-- **notebooks/**: Contiene los Jupyter Notebooks con el código de cada fase del proyecto, desde la exploración hasta el modelado.
-- **processed_data/**: Guarda los datasets limpios y transformados, listos para ser consumidos por los modelos.
+Si te gustan los proyectos que muestran el proceso real, con sus éxitos y sus reveladores callejones sin salida, considera dar un `follow`.
 
-## Uso
+**Sígueme en GitHub: [TheWomanizer](https://github.com/TheWomanizer)**
 
-Para replicar el proyecto, siga los pasos delineados en los Jupyter Notebooks en orden numérico, comenzando por `01_exploracion_inicial.ipynb`.
-
-1.  **Configuración del Entorno:** Se recomienda crear un entorno virtual de Python y instalar las dependencias listadas en `notebooks/requirements.txt`.
-2.  **Ejecución de Notebooks:** Ejecute los notebooks en secuencia para realizar la limpieza de datos, el entrenamiento de modelos y la evaluación.
-
-## Autores y Contribuciones
-
-- **Autor:** Jose Alejandro Jimenez Vasquez
-- **Correo:** jajimenez4@eafit.edu.co
+Cada `follow` y cada estrella son un gran motivador para seguir construyendo y compartiendo proyectos con este enfoque honesto.
 
 ---
-
+*Proyecto desarrollado por José Alejandro Jiménez Vásquez.*
