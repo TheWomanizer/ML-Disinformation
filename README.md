@@ -1,46 +1,66 @@
 # Sistema Integral para la Detección de Desinformación
-### :O ._. La historia de cómo un mega-ensamble de 16 modelos compitió contra RoBERTa y vivió para contarlo.
 
-Este repositorio es el recuento del viaje que fue mi proyecto final del Diplomado de Machine Learning. Lo que empezó como una misión para detectar noticias falsas se convirtió en una odisea a través de docenas de modelos, una batalla campal contra el *data leakage* y, finalmente, una valiosa lección sobre la eficiencia de los Transformers.
+### La historia de cómo un mega-ensamble de 16 modelos compitió contra RoBERTa y vivió para contarlo.
 
-## La Trama Principal: 'The Real Slim Ensemble' vs. RoBERTa
-
-Se construyó "The Real Slim Ensemble", una ambiciosa arquitectura de 16 modelos apilados con la meta de ser la solución definitiva a la desinformación. ¿El resultado? Un sólido F1-Score de **0.8870**.
-
-Nada mal, ¿no? El giro de la trama es que un único modelo, **RoBERTa**, sin todo el andamiaje, alcanzó por su cuenta un **0.8889**.
-
-La conclusión fue fascinante: después de un esfuerzo considerable, el complejo ensamble fue como una orquesta sinfónica compitiendo contra un virtuoso solista. Una gran lección y una historia que vale la pena compartir.
-
-## Lecciones Aprendidas en la Trinchera (Hallazgos Clave)
-
-- **RoBERTa es un Titán:** Para esta tarea, los modelos Transformers demostraron estar en una categoría propia. El rendimiento que ofrecen de base es formidable.
-- **Más No Siempre es Mejor:** Este proyecto es un caso de estudio. Apilar modelos más débiles sobre uno muy fuerte puede no generar una mejora neta si introducen más ruido que señal.
-- **El Preprocesamiento es Ley:** Sin una corrección rigurosa del *data leakage* (pasando de 134k a 1k de filas para NLP), las métricas no son confiables. Un paso doloroso pero indispensable para obtener resultados realistas.
-- **Winsorizing al Rescate:** Ante datos con valores extremos, la técnica de *Winsorizing* fue una herramienta clave para estabilizar los modelos y reducir la influencia de outliers.
-
-## El Mapa de la Aventura (Estructura del Repositorio)
-
-- **[`PROYECTO.md`](PROYECTO.md)**: La bitácora completa del viaje. Contiene cada detalle del proceso y los análisis. **(Haz clic aquí para leer la historia completa)**
-- **`notebooks/`**: Las etapas de la expedición. Nueve notebooks, numerados del `01` al `09`. Se recomienda seguirlos en orden para entender la historia.
-- **`models/`**, **`processed_data/`**, etc.: El equipo y los artefactos recuperados. Modelos, datos limpios y otros recursos.
-
-## ¿Quieres Replicar la Expedición?
-
-1.  Clona este repositorio.
-2.  Crea un entorno virtual (es una buena práctica).
-3.  Instala las dependencias desde la carpeta `notebooks`:
-    ```bash
-    pip install -r notebooks/requirements.txt
-    ```
-4.  Ejecuta los notebooks en orden numérico, empezando por el `01`.
-
-## Una Pequeña Invitación
-
-Si te gustan los proyectos que muestran el proceso real, con sus éxitos y sus reveladores callejones sin salida, considera dar un `follow`.
-
-**Sígueme en GitHub: [TheWomanizer](https://github.com/TheWomanizer)**
-
-Cada `follow` y cada estrella son un gran motivador para seguir construyendo y compartiendo proyectos con este enfoque honesto.
+Este repositorio contiene el proyecto final del Diplomado de Machine Learning de la Universidad EAFIT. El trabajo documenta el proceso de construcción de un sistema de detección de desinformación, desde el preprocesamiento de datos hasta la evaluación comparativa de arquitecturas de Machine Learning de distinta complejidad.
 
 ---
-*Proyecto desarrollado por José Alejandro Jiménez Vásquez.*
+
+## Resumen y Hallazgo Principal
+
+Se desarrolló un sistema de meta-aprendizaje, **"The Real Slim Ensemble"**, que integra 16 modelos predictivos (incluyendo árboles de decisión, redes neuronales y transformers) con el objetivo de maximizar la precisión en la clasificación de noticias.
+
+El resultado más significativo del proyecto no fue el rendimiento del ensamble (F1-Score: 0.8870), sino la comparación con su componente individual más fuerte. Un único modelo **RoBERTa**, sin el andamiaje del ensamble, obtuvo un rendimiento superior (F1-Score: 0.8889).
+
+Esta conclusión subraya una lección fundamental: en problemas donde un modelo experto (como un Transformer pre-entrenado) es excepcionalmente bueno, la complejidad adicional de un ensamble puede no traducirse en una mejora de rendimiento.
+
+## Conclusiones Técnicas Clave
+
+-   **Dominio de los Transformers:** RoBERTa se consolidó como la arquitectura de vanguardia para esta tarea de clasificación de texto, estableciendo un baseline de rendimiento muy difícil de superar.
+-   **Límites del Ensamblaje:** Este proyecto sirve como caso de estudio sobre los rendimientos decrecientes. Apilar modelos de menor rendimiento sobre un modelo SOTA (*State-Of-The-Art*) puede introducir ruido y degradar la predicción final.
+-   **Impacto Crítico del Preprocesamiento:** La corrección del *data leakage* fue el paso más importante para una evaluación honesta de los modelos NLP. Al haber múltiples tweets para una misma noticia, fue necesario reducir el dataset de 134,000 a 1,058 registros únicos para evitar que el modelo "memorizara" las respuestas.
+-   **Estabilización con Winsorizing:** La técnica de *Winsorizing* fue crucial para acotar los valores atípicos en las características numéricas, lo que mejoró la estabilidad y el rendimiento de los modelos tradicionales.
+
+## Estructura del Repositorio
+
+-   **[`PROYECTO.md`](PROYECTO.md)**: El informe final y la bitácora completa del proyecto. Contiene un análisis detallado de la metodología y los resultados. **(Recomendado para una inmersión profunda)**.
+-   **`/notebooks`**: Contiene los 9 Jupyter Notebooks que documentan cada paso del proyecto, desde la exploración (`01_...`) hasta el ensamble final (`09_...`).
+-   **`/models`**: Almacena los modelos serializados (`.pkl`, `.h5`), así como los resultados de los experimentos y las comparaciones de rendimiento.
+-   **`/processed_data`**: Contiene los datasets intermedios generados tras la limpieza y el preprocesamiento.
+
+## Guía de Instalación y Reproducción
+
+Para replicar este proyecto, se recomienda seguir los siguientes pasos en un entorno limpio.
+
+**1. Clonar el Repositorio**
+```bash
+git clone https://github.com/TheWomanizer/ML-Disinformation.git
+cd ML-Disinformation
+```
+
+**2. Crear un Entorno Virtual**
+
+Es una buena práctica para aislar las dependencias del proyecto. Se recomienda usar Python 3.9 o superior.
+```bash
+python -m venv .venv
+source .venv/bin/activate  # En Linux/macOS
+# .venv\Scripts\activate   # En Windows
+```
+
+**3. Instalar Dependencias**
+
+Las librerías requeridas se encuentran en la carpeta `notebooks`.
+```bash
+pip install -r notebooks/requirements.txt
+```
+
+**4. Ejecutar los Notebooks**
+
+Para entender el flujo de trabajo completo, ejecute los notebooks en orden secuencial, comenzando por `01_exploracion_inicial.ipynb`.
+
+## Contacto
+
+-   **Autor:** José Alejandro Jiménez Vásquez
+-   **GitHub:** [TheWomanizer](https://github.com/TheWomanizer) (¡un `follow` siempre es un gran motivador!)
+
+---
