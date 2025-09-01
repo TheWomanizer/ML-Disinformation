@@ -1,5 +1,5 @@
 # Sistema Integral para la Detección de Desinformación
-### O: La historia de cómo un mega-ensamble de 16 modelos compitió contra RoBERTa y vivió para contarlo.
+### :O ._. La historia de cómo un mega-ensamble de 16 modelos compitió contra RoBERTa y vivió para contarlo.
 
 Este repositorio es el recuento del viaje que fue mi proyecto final del Diplomado de Machine Learning. Lo que empezó como una misión para detectar noticias falsas se convirtió en una odisea a través de docenas de modelos, una batalla campal contra el *data leakage* y, finalmente, una valiosa lección sobre la eficiencia de los Transformers.
 
